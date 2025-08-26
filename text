@@ -1,0 +1,16 @@
+ g++ -std=c++17 -O2 -Wall -Wextra -o riscv_asm riscv_assembler.cpp
+
+.\riscv_asm.exe test_branches_only.s > branches.hex
+.\riscv_asm.exe test_im_only.s       > im.hex
+.\riscv_asm.exe test_jumps_only.s    > jumps.hex
+.\riscv_asm.exe test_stores_only.s   > stores.hex
+.\riscv_asm.exe test_ui_only.s       > ui.hex
+.\riscv_asm.exe test_reg_only.s     >reg.hex
+
+
+python check.py branches.hex hex_branches_only.dump
+python check.py im.hex       hex_im_only.dump
+python check.py jumps.hex    hex_jumps_only.dump
+python check.py stores.hex   hex_stores_only.dump
+python check.py ui.hex       hex_ui_only.dump
+python check.py reg.hex      hex_reg_only.dump   
